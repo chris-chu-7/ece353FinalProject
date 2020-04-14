@@ -1,1 +1,5 @@
-./Project/Project.uvguix.*
+Project/obj/
+Project/lst/
+Project/RTE/
+Project/Project.*
+
