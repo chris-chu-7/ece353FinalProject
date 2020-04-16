@@ -1,0 +1,14 @@
+ECE 353 Final Project Ideas / Tasks
+
+Game:
+Control a race car with the joystick by moving left/right.
+Goal is to last as long as possible while dodging obstacles.
+Speed will increase as the game goes on.
+
+Requirements:
+- Joystick / ADC: Used to move the car left/right
+- Push Buttons: Shoot? Use power ups?
+- Cap Touch: Used at the main menu
+- EEPROM: Save the high score
+- Red LEDs: Display level/speed? Flash when dead? Display number of power ups / lives?
+- UART: Pause the game
