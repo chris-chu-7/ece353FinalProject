@@ -27,6 +27,7 @@
 // Globals
 uint16_t CAR_X_COORD = COLS/2;
 uint16_t CAR_Y_COORD = ROWS - 20;
+volatile bool ALERT_CAR = true;
 
 
 //*****************************************************************************
@@ -47,6 +48,21 @@ void EnableInterrupts(void)
   }
 }
 
+void moveCar(volatile PS2_DIR_t direction)
+{
+	switch(direction)
+	{
+		case PS2_DIR_LEFT:
+			CAR_X_COORD = CAR_X_COORD - 1;
+			return;
+		case PS2_DIR_RIGHT:
+			CAR_X_COORD = CAR_X_COORD + 1;
+			return;
+		
+		default:
+			return;
+	}
+}
 
 //*****************************************************************************
 //*****************************************************************************
@@ -65,24 +81,12 @@ main(void)
   printf("**************************************\n\r");
  
 	eeprom_byte_read(EEPROM_I2C_BASE, HIGHSCORE_ADDR, &data);
-	printf("Data1: %u\n\r", data);
-	
-	eeprom_byte_write(EEPROM_I2C_BASE, HIGHSCORE_ADDR, 0x07);
-
-	eeprom_byte_read(EEPROM_I2C_BASE, HIGHSCORE_ADDR, &data);
 	printf("Data2: %u\n\r", data);
 	printf("Running...\n\r");
-	
-	lcd_draw_image(CAR_X_COORD,
-									carWidthPixels, 
-									CAR_Y_COORD,
-									carHeightPixels,
-									carBitmaps,
-									LCD_COLOR_BLUE,
-									LCD_COLOR_BLACK);
 
 	while(1)
 	{
+		// Check if paused
 		input = getchar();
 		if(input == ' ')
 		{
@@ -96,6 +100,25 @@ main(void)
 				printf("Paused. Hit space bar to resume\n\r");
 				isPaused = true;
 			}
+		}
+		
+		// Don't do anything else until unpaused
+		if(isPaused)
+		{
+			continue;
+		}
+		
+		if(ALERT_CAR)
+		{
+			printf("Alert Car"); 
+			ALERT_CAR = false;
+			lcd_draw_image(CAR_X_COORD,
+								carWidthPixels, 
+								CAR_Y_COORD,
+								carHeightPixels,
+								carBitmaps,
+								LCD_COLOR_BLUE,
+								LCD_COLOR_BLACK);
 		}
 	}
 			

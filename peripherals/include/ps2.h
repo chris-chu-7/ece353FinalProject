@@ -51,6 +51,9 @@
 // Either will work.
 #define   PS2_ADC_BASE     ADC0_BASE
 
+#define PS2_ADC_LOW_THRESHOLD		    0x0400
+#define PS2_ADC_HIGH_THRESHOLD	    0x0C00
+
 // ADD CODE
 // Set the analog channel for each direction.  Each analog channel is associated with a
 // single GPIO pin.  Make sure to see table 13-1 to see how the GPIO pin maps to an 
