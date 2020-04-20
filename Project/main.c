@@ -50,8 +50,9 @@ int
 main(void)
 {
 	uint8_t data;
+	char input;
+	bool isPaused = false;
 	
-	data = 5;
 	init_hardware();
 
 	printf("\n\f");
@@ -66,10 +67,24 @@ main(void)
 
 	eeprom_byte_read(EEPROM_I2C_BASE, HIGHSCORE_ADDR, &data);
 	printf("Data2: %u\n\r", data);
-	
+	printf("Running...\n\r");
 
 	while(1)
 	{
+		input = getchar();
+		if(input == ' ')
+		{
+			if(isPaused)
+			{
+				printf("Running...\n\r");
+				isPaused = false;
+			}
+		  else
+			{
+				printf("Paused. Hit space bar to resume\n\r");
+				isPaused = true;
+			}
+		}
 	}
 			
 }
