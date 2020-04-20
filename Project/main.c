@@ -22,7 +22,7 @@
 
 #include "main.h"
 
-#define HIGHSCORE_ADDR 0x0000
+#define HIGHSCORE_ADDR 0x0001
 
 
 //*****************************************************************************
@@ -49,7 +49,9 @@ void EnableInterrupts(void)
 int 
 main(void)
 {
-	uint8_t *data;
+	uint8_t data;
+	
+	data = 5;
 	init_hardware();
 
 	printf("\n\f");
@@ -57,15 +59,17 @@ main(void)
   printf("* Final Project - Main \n\r");
   printf("**************************************\n\r");
  
+	eeprom_byte_read(EEPROM_I2C_BASE, HIGHSCORE_ADDR, &data);
+	printf("Data1: %u\n\r", data);
 	
-	eeprom_byte_read(EEPROM_I2C_BASE, HIGHSCORE_ADDR, data);
-	printf("Data1: %u\n\r", *data);
+	eeprom_byte_write(EEPROM_I2C_BASE, HIGHSCORE_ADDR, 0x07);
+
+	eeprom_byte_read(EEPROM_I2C_BASE, HIGHSCORE_ADDR, &data);
+	printf("Data2: %u\n\r", data);
 	
-	eeprom_byte_write(EEPROM_I2C_BASE, HIGHSCORE_ADDR, 0x05);
 
-	eeprom_byte_read(EEPROM_I2C_BASE, HIGHSCORE_ADDR, data);
-	printf("Data2: %u\n\r", *data);
-
-	while(1){};
+	while(1)
+	{
+	}
 			
 }
