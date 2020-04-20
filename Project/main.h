@@ -38,4 +38,5 @@
 
 #include "project_interrupts.h"
 #include "project_hardware_init.h"
+#include "project_images.h"
 #endif

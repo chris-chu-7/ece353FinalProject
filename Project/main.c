@@ -24,6 +24,10 @@
 
 #define HIGHSCORE_ADDR 0x0001
 
+// Globals
+uint16_t CAR_X_COORD = COLS/2;
+uint16_t CAR_Y_COORD = ROWS - 20;
+
 
 //*****************************************************************************
 //*****************************************************************************
@@ -68,6 +72,14 @@ main(void)
 	eeprom_byte_read(EEPROM_I2C_BASE, HIGHSCORE_ADDR, &data);
 	printf("Data2: %u\n\r", data);
 	printf("Running...\n\r");
+	
+	lcd_draw_image(CAR_X_COORD,
+									carWidthPixels, 
+									CAR_Y_COORD,
+									carHeightPixels,
+									carBitmaps,
+									LCD_COLOR_BLUE,
+									LCD_COLOR_BLACK);
 
 	while(1)
 	{

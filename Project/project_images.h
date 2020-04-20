@@ -5,9 +5,9 @@
 #include <stdint.h>
 
 /* Bitmap info for race_car */
-extern const uint8_t race_carBitmaps[];
-extern const uint8_t race_carWidthPixels;
-extern const uint8_t race_carHeightPixels;
+extern const uint8_t carBitmaps[];
+extern const uint8_t carWidthPixels;
+extern const uint8_t carHeightPixels;
 
 // Bitmap info for obstacles
 extern const uint8_t obstacleBitmaps[];
