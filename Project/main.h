@@ -49,6 +49,8 @@ typedef enum{
   PS2_DIR_INIT,
 } PS2_DIR_t;
 
-void moveCar(PS2_DIR_t);
+extern volatile bool ALERT_CAR;
+
+void moveCar(PS2_DIR_t direction);
 
 #endif

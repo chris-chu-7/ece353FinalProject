@@ -50,12 +50,15 @@ void EnableInterrupts(void)
 
 void moveCar(volatile PS2_DIR_t direction)
 {
+	
 	switch(direction)
 	{
 		case PS2_DIR_LEFT:
+			printf("Move car left\n\r");
 			CAR_X_COORD = CAR_X_COORD - 1;
 			return;
 		case PS2_DIR_RIGHT:
+			printf("Move car right\n\r");
 			CAR_X_COORD = CAR_X_COORD + 1;
 			return;
 		
@@ -86,6 +89,7 @@ main(void)
 
 	while(1)
 	{
+		/*
 		// Check if paused
 		input = getchar();
 		if(input == ' ')
@@ -107,10 +111,10 @@ main(void)
 		{
 			continue;
 		}
-		
+		*/
 		if(ALERT_CAR)
 		{
-			printf("Alert Car"); 
+			printf("Alert Car\n\r"); 
 			ALERT_CAR = false;
 			lcd_draw_image(CAR_X_COORD,
 								carWidthPixels, 

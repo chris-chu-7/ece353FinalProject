@@ -31,15 +31,13 @@ void init_hardware(void)
   lcd_config_screen();
   lcd_clear_screen(LCD_COLOR_BLACK);
 	ps2_initialize();
-	EnableInterrupts();
 	
-	printf("Setting up timers\n\r");
 	// Setup timers
 	// Timer2 is used to move the car
 	gp_timer_config_32(TIMER2_BASE,TIMER_TAMR_TAMR_PERIOD, 500000, false, true);
-	printf("Timer2\n\r");
 	// Timer3 is used to update the adc
 	gp_timer_config_32(TIMER3_BASE,TIMER_TAMR_TAMR_PERIOD, 50000, false, true);
-	printf("Timer3\n\r");
+
+	EnableInterrupts();
 }
 

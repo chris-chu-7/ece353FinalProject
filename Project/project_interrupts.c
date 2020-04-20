@@ -59,7 +59,7 @@ PS2_DIR_t ps2_get_direction(void)
 void TIMER2A_Handler(void)
 {	
 	moveCar(PS2_DIR);
-	
+	ALERT_CAR = true;
 	// Clear the interrupt
 	TIMER2->ICR |= TIMER_ICR_TATOCINT;
 }
@@ -80,7 +80,6 @@ void TIMER3A_Handler(void)
 //*****************************************************************************
 void ADC0SS2_Handler(void)
 {
-	
 	PS2_X_DATA = ADC0->SSFIFO2;
 	PS2_Y_DATA = ADC0->SSFIFO2;
 	
