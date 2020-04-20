@@ -21,6 +21,13 @@
 // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "main.h"
+#include "project_hardware_init.h"
 
-
+void init_hardware(void)
+{
+	DisableInterrupts();
+	init_serial_debug(true, true);
+	eeprom_init();
+	EnableInterrupts();
+}
 

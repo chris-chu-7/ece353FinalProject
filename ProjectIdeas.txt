@@ -12,3 +12,19 @@ Requirements:
 - EEPROM: Save the high score
 - Red LEDs: Display level/speed? Flash when dead? Display number of power ups / lives?
 - UART: Pause the game
+
+Tasks:
+- Set up EEPROM
+- Draw Main Menu
+- Draw car
+- Draw Obstacles
+- Enable pause via UART
+- Allow cap touch to start the game or display high score
+- Control car with joysticks
+- generate random? obstacles and move them down screen
+- collision detection and end game
+- increase speed
+- display LEDs based on speed
+- Draw Power-ups
+- Enable power-up functionality
+- use power-ups with push buttons
