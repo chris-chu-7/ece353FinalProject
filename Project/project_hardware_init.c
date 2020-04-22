@@ -22,5 +22,22 @@
 
 #include "main.h"
 
+void init_hardware(void)
+{
+	DisableInterrupts();
+	init_serial_debug(true, true);
+	eeprom_init();
+	lcd_config_gpio();
+  lcd_config_screen();
+  lcd_clear_screen(LCD_COLOR_BLACK);
+	ps2_initialize();
+	
+	// Setup timers
+	// Timer2 is used to move the car
+	gp_timer_config_32(TIMER2_BASE,TIMER_TAMR_TAMR_PERIOD, 500000, false, true);
+	// Timer3 is used to update the adc
+	gp_timer_config_32(TIMER3_BASE,TIMER_TAMR_TAMR_PERIOD, 50000, false, true);
 
+	EnableInterrupts();
+}
 

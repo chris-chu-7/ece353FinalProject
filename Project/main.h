@@ -33,7 +33,24 @@
 #include "timers.h"
 #include "ps2.h"
 #include "launchpad_io.h"
+#include "eeprom.h"
+#include "serial_debug.h"
 
 #include "project_interrupts.h"
 #include "project_hardware_init.h"
+#include "project_images.h"
+
+typedef enum{
+  PS2_DIR_UP,
+  PS2_DIR_DOWN,
+  PS2_DIR_LEFT,
+  PS2_DIR_RIGHT,
+  PS2_DIR_CENTER,
+  PS2_DIR_INIT,
+} PS2_DIR_t;
+
+extern volatile bool ALERT_CAR;
+
+void moveCar(PS2_DIR_t direction);
+
 #endif
